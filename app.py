@@ -28,17 +28,14 @@ def get_db_connection():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     ca_cert_path = os.path.join(base_dir, "certs", "cacert.pem")
 
-  return pymysql.connect(
+    return mysql.connector.connect(
         host=os.getenv("MYSQL_HOST"),
         port=int(os.getenv("MYSQL_PORT", 3306)),
         user=os.getenv("MYSQL_USER"),
         password=os.getenv("MYSQL_PASSWORD"),
         database=os.getenv("MYSQL_DB"),
-        cursorclass=pymysql.cursors.DictCursor,
-        ssl={
-            "ca": ca_cert_path
-        },
-        autocommit=True
+        ssl_ca=ca_cert_path,
+        ssl_verify_cert=True
     )
 
 
