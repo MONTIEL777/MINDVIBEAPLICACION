@@ -27,12 +27,18 @@ mail = Mail(app)
 def get_db_connection():
     return pymysql.connect(
         host=os.getenv("MYSQL_HOST"),
-        port=int(os.getenv("MYSQL_PORT")),
+        port=int(os.getenv("MYSQL_PORT", 3306)),
         user=os.getenv("MYSQL_USER"),
         password=os.getenv("MYSQL_PASSWORD"),
         database=os.getenv("MYSQL_DB"),
-        cursorclass=pymysql.cursors.DictCursor
+        cursorclass=pymysql.cursors.DictCursor,
+        ssl={
+            "ca": "/etc/ssl/certs/ca-certificates.crt"
+        },
+        ssl_mode="VERIFY_IDENTITY",
+        autocommit=True
     )
+
 
 # 📌 Ruta principal
 @app.route('/')
