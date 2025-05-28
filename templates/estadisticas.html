@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estadísticas de Emociones</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body class="bg-gradient-to-r from-gray-800 to-teal-500 text-white min-h-screen flex flex-col items-center justify-center p-8">
+
+    <div class="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg w-full max-w-3xl">
+        <h1 class="text-2xl font-bold text-center mb-4">📊 Tus Estadísticas Emocionales</h1>
+
+        <!-- Selector de Filtro -->
+        <form method="get" action="{{ url_for('estadisticas') }}" class="mb-6 flex justify-center">
+            <label for="filtro" class="mr-3 text-lg font-bold text-white bg-gradient-to-r from-teal-400 to-cyan-600 px-3 py-1 rounded-full shadow-md">
+                🔍 Filtrar por:
+            </label>
+            <select name="filtro" id="filtro" onchange="this.form.submit()"
+            class="bg-white text-gray-800 font-semibold px-4 py-2 rounded-lg shadow-lg border border-gray-300 hover:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-400 transition duration-200 ease-in-out">
+                <option value="dia" {% if filtro == 'dia' %}selected{% endif %}>📅 Hoy</option>
+                <option value="semana" {% if filtro == 'semana' %}selected{% endif %}>🗓 Últimos 7 días</option>
+                <option value="15dias" {% if filtro == '15dias' %}selected{% endif %}>🗓 Últimos 15 días</option>
+                <option value="mes" {% if filtro == 'mes' %}selected{% endif %}>📆 Últimos 30 días</option>
+            </select>
+        </form>
+
+        <!-- Gráfica -->
+        <canvas id="emocionesChart" class="mb-6"></canvas>
+
+        <!-- Botón para descargar PDF -->
+        <button onclick="generarPDF()" 
+            class="bg-gradient-to-r from-green-500 to-blue-500 text-white py-2 px-4 mb-4 rounded-lg shadow-md transition-transform transform hover:scale-105">
+            📄 Descargar Reporte en PDF
+        </button>
+
+        <!-- Botón volver -->
+        <a href="{{ url_for('detectar') }}" class="bg-gradient-to-r from-red-500 to-teal-500 text-white py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">
+            🏠 Volver al Inicio
+        </a>
+    </div>
+
+    <!-- Script para mostrar gráfica -->
+    <script>
+        try {
+            const emociones = JSON.parse('{{ emociones | tojson | safe }}');
+            const totales = JSON.parse('{{ totales | tojson | safe }}');
+
+            if (emociones.length === 0 || totales.length === 0) {
+                console.warn("No hay datos para mostrar en la gráfica.");
+            } else {
+                const ctx = document.getElementById('emocionesChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: emociones,
+                        datasets: [{
+                            label: 'Cantidad de veces detectada',
+                            data: totales,
+                            backgroundColor: [
+                                '#f87171', '#34d399', '#60a5fa', '#fbbf24', '#a78bfa', '#f472b6'
+                            ],
+                            borderColor: '#fff',
+                            borderWidth: 2,
+                            borderRadius: 6,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: { color: 'white' }
+                            },
+                            x: {
+                                ticks: { color: 'white' }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: { color: 'white' }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Frecuencia de Emociones Detectadas',
+                                color: 'white',
+                                font: { size: 18 }
+                            }
+                        }
+                    }
+                });
+            }
+        } catch (e) {
+            console.error("Error al generar la gráfica:", e);
+        }
+    </script>
+
+    <!-- Script para generar PDF -->
+    <script>
+        async function generarPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+    
+            // Datos del usuario
+            const nombre = "{{ session['nombre'] }}";
+            const correo = "{{ session['correo'] }}";
+            const fecha = new Date().toLocaleDateString();
+    
+            // Logo (opcional)
+            const logoUrl = "/static/media/LOGOMINDVIBE.png";
+    
+            // Título del reporte
+            doc.setFontSize(20);
+            doc.setTextColor(40, 40, 40);
+            doc.text("Reporte de Estadísticas Emocionales", 105, 20, null, null, 'center');
+    
+            // Información del usuario
+            doc.setFontSize(12);
+            doc.text(`Nombre del Usuario: ${nombre}`, 20, 40);
+            doc.text(`Correo Electrónico: ${correo}`, 20, 48);
+            doc.text(`Fecha del Reporte: ${fecha}`, 20, 56);
+    
+            // Descripción
+ // Descripción en un solo párrafo bien formateado
+ const descripcion = "Este reporte muestra el análisis emocional basado en las detecciones durante el periodo seleccionado. A continuación se visualiza un gráfico de barras representando la frecuencia con la que se detectó cada emoción.";
+        
+        doc.setFontSize(12);
+        doc.text(descripcion, 20, 70, {
+            maxWidth: 170,  // Ancho máximo para que el texto no salga de la página
+            align: 'left'
+        });
+    
+            // Línea separadora
+            doc.setDrawColor(200);
+            doc.line(20, 85, 190, 85);
+    
+            // Subtítulo
+            doc.setFontSize(14);
+            doc.text("Frecuencia de Emociones Detectadas", 20, 95);
+    
+            // Captura de la gráfica
+            const canvas = document.getElementById('emocionesChart');
+            const image = await html2canvas(canvas);
+            const imgData = image.toDataURL('image/png');
+    
+            // Imagen de la gráfica
+            doc.addImage(imgData, 'PNG', 20, 100, 170, 80);
+    
+            // Lista de emociones (opcional)
+            const emociones = JSON.parse('{{ emociones | tojson | safe }}');
+            doc.setFontSize(12);
+            doc.text("Emociones detectadas:", 20, 190);
+            
+            let yPosition = 200;
+            emociones.forEach(emocion => {
+                doc.text(`- ${emocion}`, 25, yPosition);
+                yPosition += 7;
+            });
+    
+            // Guardar
+            doc.save(`Reporte_Emocional_${nombre}.pdf`);
+        }
+    </script>
+    
+</body>
+</html>

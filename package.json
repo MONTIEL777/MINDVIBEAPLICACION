@@ -1,0 +1,18 @@
+{
+  "name": "emociones-web",
+  "version": "1.0.0",
+  "description": "Este proyecto es una aplicación web que permite detectar emociones humanas a través de una imagen capturada desde la cámara o cargada desde el dispositivo. Una vez detectada la emoción, un chatbot llamado **Alexia** inicia una conversación amigable y empática, ofreciendo apoyo emocional según la emoción detectada.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2"
+  }
+}

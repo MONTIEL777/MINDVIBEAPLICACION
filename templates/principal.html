@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MindVibe</title>
+    <link rel="stylesheet" href="/static/css/estilos.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <link rel="icon" href="/static/media/LOGOMINDVIBE.ico" type="image/x-icon">
+            <p class="logo">MINDVIBE</p>
+            <nav>
+                <a href="#somos-proya">Quienes Somos</a>
+                <a href="#nuestros-programas">Nuestros Programas</a>
+                <a href="#caracteristicas">Misión y Visión</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <h1>MINDVIBE <br>TU ALIADO DIGITAL</h1>
+        <a href="{{ url_for('formulario') }}">
+            <button>¡Regístrate!</button>
+        </a>
+    </section>
+
+    <section id="somos-proya">
+        <div class="container">
+            <div class="img-container"></div>
+            <div class="texto">
+
+                <h2>Somos <span class="color-acento">MINDVIBE!</span></h2>
+                <p>Somos una empresa comprometida con el bienestar emocional de las personas. 
+                    Nuestro propósito es ofrecer soluciones innovadoras que permitan a 
+                    cada usuario recibir recomendaciones personalizadas, 
+                    promoviendo su equilibrio emocional y mejorando su calidad de vida.
+                    Nos enfocamos en proporcionar una experiencia proactiva y empática, 
+                    adaptada a las necesidades individuales de cada persona.
+                    </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="nuestros-programas">
+        <div class="container">
+            <h2>Nuestros Programas</h2>
+            <div class="programas">
+                <div class="carta">
+                    <h3>IA MINDVIBE</h3>
+                    <p>Una plataforma innovadora basada en inteligencia artificial 
+                        que detecte y analice en tiempo real las emociones de 
+                        los usuarios a través del reconocimiento facial, 
+                        proporcionando recomendaciones personalizadas que promuevan 
+                        el bienestar emocional y el equilibrio personal.</p>
+                    <button>+ Info</button>
+                </div>
+                <div class="carta">
+                    <h3>VIDEOJUEGOS ADAPTATIVOS</h3>
+                    <p>Un videojuego que cambia dinámicamente su comportamiento según cómo se siente el jugador, detectado por su rostro, voz, frecuencia cardíaca o decisiones.</p>
+                    <button>+ Info</button>
+                </div>
+                <div class="carta">
+                    <h3>ANÁLISIS EMOCIONAL DE TEXTO O REDES SOCIALES</h3>
+                    <p>Es un sistema basado en IA (especialmente NLP – Procesamiento de Lenguaje Natural) que lee lo que las personas escriben en mensajes, redes sociales, blogs, foros o correos, y detecta emociones, sentimientos o intenciones.
+
+                    </p>
+                    <button>+ Info</button>
+                </div>  
+            </div>
+        </div>
+    </section>
+
+    <section id="caracteristicas">
+        <div class="container">
+          <p>
+            Somos una empresa comprometida con el bienestar emocional de las personas. Nuestro propósito es ofrecer soluciones innovadoras que permitan a cada usuario recibir recomendaciones personalizadas, 
+            promoviendo su equilibrio emocional y mejorando su calidad de vida.
+          </p>
+      
+          <p>
+            Ser la plataforma líder en bienestar emocional, reconocida por su innovación y enfoque personalizado. Buscamos transformar la forma en que las personas gestionan sus emociones, creando una comunidad global donde cada individuo tenga acceso a herramientas proactivas que fomenten su salud emocional y mejoren su calidad de vida de manera sostenible.
+          </p>
+        </div>
+      </section>
+      
+
+    <section id="final">
+        <h2>Listo para usar IA MindVibe?</h2>
+        <a href="/formulario">
+            <button>¡Regístrate!</button>
+        </a>
+        
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; MindVibe 2025</p>
+        </div>
+    </footer>
+</body>
+</html>

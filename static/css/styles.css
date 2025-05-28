@@ -1,0 +1,500 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Estilos del título MINDVIBE */
+.mindvibe-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;  /* Color llamativo */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra elegante */
+    letter-spacing: 2px; /* Espaciado entre letras */
+    text-transform: uppercase;
+}
+
+
+/* Contenedor centrado */
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+
+/* Estilos del formulario */
+.formulario {
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    width: 360px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s;
+}
+
+/* Efecto al pasar el mouse sobre el formulario */
+.formulario:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Título */
+.formulario h2 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;  /* Alinea verticalmente */
+    gap: 10px; /* Espacio entre el ícono y el input */
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: white;
+}
+
+.input-container i {
+    position: absolute;
+    left: 15px;
+    font-size: 18px;
+    color: white;
+    background: linear-gradient(to right, #6a0dad, #007bb5); /* Fondo degradado */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-container input,
+.input-container select {
+    flex: 1;
+    padding: 15px 15px 20px 55px; /* Espacio para el ícono */
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    font-size: 16px;
+    background: transparent;
+}
+
+.input-container label {
+    position: absolute;
+    top: 50%;
+    left: 55px;
+    transform: translateY(-50%);
+    color: #020202;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+    top: 5px;
+    left: 55px;
+    font-size: 12px;
+    color: #007bb5;
+}
+
+/* Estilos para el select */
+.input-container select {
+    appearance: none;
+    cursor: pointer;
+}
+
+/* Efecto al enfocar input */
+.input-container input:focus,
+.input-container select:focus {
+    border-color: #007bb5;
+    box-shadow: 0 0 8px rgba(0, 123, 181, 0.5);
+}
+
+/* Botón */
+.formulario button {
+    background: linear-gradient(to right, #d10f0f, #4ca1af);
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s, transform 0.2s;
+}
+
+/* Efecto hover en el botón */
+.formulario button:hover {
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    transform: scale(1.05);
+}
+
+
+/* Contenedor principal */
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Estilo general del contenedor */
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: white;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Estilo del icono */
+.input-container i {
+    position: absolute;
+    left: 15px;
+    font-size: 18px;
+    color: white;
+    background: linear-gradient(to right, #6a0dad, #007bb5);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo de los inputs */
+.input-container input {
+    flex: 1;
+    padding: 15px 15px 15px 60px; /* Espacio para el ícono */
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    font-size: 16px;
+    background: transparent;
+}
+
+/* Estilo del label */
+.input-container label {
+    position: absolute;
+    top: 50%;
+    left: 60px;
+    transform: translateY(-50%);
+    color: #000000;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+/* Efecto cuando el input está enfocado */
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+    top: 5px;
+    left: 60px;
+    font-size: 12px;
+    color: #007bb5;
+}
+
+/* Estilos para mejorar la experiencia */
+.input-container input:focus {
+    border-color: #007bb5;
+    box-shadow: 0 0 8px rgba(0, 123, 181, 0.5);
+}
+
+.boton-regresar {
+    background: linear-gradient(to right, #d10f0f, #4ca1af);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px;
+}
+
+.boton-regresar:hover {
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+}
+
+/* Estilos para el mensaje de registro */
+p {
+    font-size: 14px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Enlace de inicio de sesión */
+p a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Efecto hover en el enlace */
+p a:hover {
+    color: #00c6ff;
+    text-decoration: underline;
+}
+
+
+
+/* Cámara y Botones */
+.video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+video, canvas {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Botones generales */
+button {
+    background: linear-gradient(to right, #d10f0f, #4ca1af);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    margin: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+   background: linear-gradient(to right, #2c3e50, #4ca1af);
+}
+
+/* Botón de enviar en el chatbot */
+#sendBtn {
+    background: linear-gradient(to right, #d10f0f, #4ca1af);
+}
+
+#sendBtn:hover {
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+}
+
+/* Botón de subida de imagen */
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    background: linear-gradient(to right, #d10f0f, #4ca1af);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.custom-file-upload:hover {
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+}
+
+/* Sección de resultado */
+#result-container {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Estilos del chatbot */
+#chatbot-container {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+
+/* Caja de mensajes */
+#chatbox {
+    height: 300px; /* Aumenta el tamaño de la ventana de los mensajes */
+    max-height: 500px; /* También puedes establecer un límite máximo de altura si es necesario */
+    overflow-y: auto;
+    padding: 12px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.3);
+    text-align: left;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    line-height: 1.2; /* Puedes ajustar la altura de las líneas */
+}
+
+
+.mensaje {
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+    font-size: 14px;
+}
+
+/* Estilo para el chatbot */
+.mensaje.bot {
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    align-self: flex-start;
+    text-align: left;
+    margin-right: auto;
+}
+
+.mensaje p {
+    text-align: justify; /* Justifica el texto */
+    word-wrap: break-word; /* Asegura que no se desborde */
+    white-space: pre-wrap; /* Mantiene los saltos de línea */
+}
+
+
+/* Estilo para el usuario */
+.mensaje.usuario {
+    background: linear-gradient(to right, #d10f0f, #4ca1af);
+    align-self: flex-end;
+    text-align: right;
+    margin-left: auto;
+}
+
+
+/* Mensaje de chatbot */
+#chatbotMessage {
+    font-style: italic;
+    font-size: 16px;
+}
+
+/* Input y botón del chatbot */
+#userInput {
+    width: 70%; /* Haz que ocupe más espacio horizontal */
+    height: 30px; /* Aumenta la altura para que sea más grande */
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
+    font-size: 16px; /* Aumenta el tamaño de la fuente */
+}
+
+
+#chatbot-container button {
+    background: linear-gradient(to right, #d10f0f, #4ca1af);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#chatbot-container button:hover {
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+}
+
+/* Contenedor principal */
+.sesión {
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    width: 360px;
+    text-align: center;
+    margin: auto;
+}
+
+/* Título */
+.sesión h2 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Contenedor de los inputs */
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: white;
+}
+
+/* Iconos dentro del input */
+.input-container i {
+    position: absolute;
+    left: 15px;
+    font-size: 18px;
+    color: white;
+    background: linear-gradient(to right, #d10f0f, #4ca1af);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilos de los inputs */
+.input-container input {
+    flex: 1;
+    padding: 15px 15px 15px 55px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    font-size: 16px;
+    background: transparent;
+}
+
+
+
+/* Efecto hover en el botón */
+button:hover {
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    transform: scale(1.05);
+}
+
+.mensaje.bot em {
+    color: rgb(255, 255, 255);
+    font-style: italic;
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0% { content: "Está escribiendo"; }
+    33% { content: "Está escribiendo."; }
+    66% { content: "Está escribiendo.."; }
+    100% { content: "Está escribiendo..."; }
+}
+
