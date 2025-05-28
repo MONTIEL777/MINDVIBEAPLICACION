@@ -9,3 +9,4 @@ werkzeug
 python-dotenv
 tensorflow==2.19.0
 tf-keras
+Flask-Mail
