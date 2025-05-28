@@ -113,7 +113,7 @@ def guardar():
 
     conn = get_db_connection()
     with conn.cursor() as cur:
-        cur.execute("INSERT INTO usuarios (nombre, correo, contraseña) VALUES (%s, %s, %s)", 
+        cur.execute("INSERT INTO usuarios (nombre, correo, password) VALUES (%s, %s, %s)", 
                     (nombre, correo, hashed_password))
         conn.commit()
     conn.close()
@@ -131,7 +131,7 @@ def login():
             usuario = cursor.fetchone()
         conn.close()
 
-        if usuario and check_password_hash(usuario['contraseña'], contraseña):
+        if usuario and check_password_hash(usuario['password'], contraseña):
             session.clear()
             session['usuario_id'] = usuario['id']
             session['nombre'] = usuario['nombre']
