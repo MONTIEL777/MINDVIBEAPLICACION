@@ -33,9 +33,9 @@ def get_db_connection():
         database=os.getenv("MYSQL_DB"),
         cursorclass=pymysql.cursors.DictCursor,
         ssl={
-            "ca": "/etc/ssl/certs/ca-certificates.crt"
+            "ca": os.path.join("certs", "cacert.pem") 
         },
-        ssl_mode="VERIFY_IDENTITY",
+        ssl_mode="VERIFY_IDENTITY", 
         autocommit=True
     )
 
