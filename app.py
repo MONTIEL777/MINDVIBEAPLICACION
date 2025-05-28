@@ -9,6 +9,7 @@ import MySQLdb.cursors
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mail import Mail, Message
 from datetime import datetime, timedelta
+import pymysql
 
 # Cargar variables de entorno desde .env
 load_dotenv()
