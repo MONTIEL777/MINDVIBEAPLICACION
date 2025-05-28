@@ -36,6 +36,7 @@ def get_db_connection():
         database=os.getenv("MYSQL_DB"),
         ssl_ca=ca_cert_path,
         ssl_verify_cert=True
+        charset='utf8mb4'
     )
 
 # 📌 Ruta principal
