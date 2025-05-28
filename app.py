@@ -35,7 +35,7 @@ def get_db_connection():
         password=os.getenv("MYSQL_PASSWORD"),
         database=os.getenv("MYSQL_DB"),
         ssl_ca=ca_cert_path,
-        ssl_verify_cert=True
+        ssl_verify_cert=True,
         charset='utf8mb4'
     )
 
