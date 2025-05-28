@@ -25,6 +25,9 @@ mail = Mail(app)
 
 # 📌 Función para conexión a la base de datos
 def get_db_connection():
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    ca_cert_path = os.path.join(base_dir, "certs", "cacert.pem")
+
     return pymysql.connect(
         host=os.getenv("MYSQL_HOST"),
         port=int(os.getenv("MYSQL_PORT", 3306)),
@@ -33,9 +36,9 @@ def get_db_connection():
         database=os.getenv("MYSQL_DB"),
         cursorclass=pymysql.cursors.DictCursor,
         ssl={
-            "ca": os.path.join("certs", "cacert.pem") 
+            "ca": ca_cert_path
         },
-        ssl_mode="VERIFY_IDENTITY", 
+        ssl_mode="VERIFY_IDENTITY",
         autocommit=True
     )
 
