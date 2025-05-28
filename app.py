@@ -23,7 +23,7 @@ app.config["MYSQL_PASSWORD"] = os.getenv("MYSQL_PASSWORD")
 app.config["MYSQL_DB"] = os.getenv("MYSQL_DB")
 
 # Configuración SSL para PlanetScale u otros servicios que requieren SSL
-app.config['MYSQL_SSL_CA'] = '/etc/ssl/certs/ca-certificates.crt'
+app.config['MYSQL_DATABASE_SSL'] = {'ssl': {'fake_flag_to_enable_tls': True}}
 
 # Clave secreta para sesiones
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
