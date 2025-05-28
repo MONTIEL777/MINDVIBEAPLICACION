@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 import cv2
 import numpy as np
 import os
-import pymysql
+import mysql.connector
 from deepface import DeepFace
 
 # Cargar variables de entorno
