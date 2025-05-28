@@ -1,6 +1,6 @@
 Flask
 gunicorn
-PyMySQL
+mysql-connector-python
 deepface
 opencv-python
 numpy
