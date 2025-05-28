@@ -31,7 +31,7 @@ def get_db_connection():
         user=os.getenv("MYSQL_USER"),
         password=os.getenv("MYSQL_PASSWORD"),
         database=os.getenv("MYSQL_DB"),
-        ssl={'ssl_ca': '/ruta/real/planetscale-ca-cert.pem'},  # Ruta real al certificado SSL
+       ssl={"ca": "/etc/ssl/certs/ca-certificates.crt"}
         cursorclass=pymysql.cursors.DictCursor
     )
 
