@@ -23,7 +23,7 @@ app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
 mail = Mail(app)
 
-# 📌 Función para conexión a la base de datos
+# 📌 Función para conexión a la base de datos (usando branch de escritura)
 def get_db_connection():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     ca_cert_path = os.path.join(base_dir, "certs", "cacert.pem")
@@ -37,7 +37,6 @@ def get_db_connection():
         ssl_ca=ca_cert_path,
         ssl_verify_cert=True
     )
-
 
 # 📌 Ruta principal
 @app.route('/')
@@ -66,10 +65,12 @@ def verificar_correo():
     except Exception as e:
         return f"Error al enviar el correo: {str(e)}"
 
+# 📌 Configuración de carpeta para imágenes
 UPLOAD_FOLDER = "static/uploads"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
+# 📌 Función para analizar emociones con DeepFace
 def analyze_emotion(image_path):
     try:
         image = cv2.imread(image_path)
@@ -84,6 +85,7 @@ def analyze_emotion(image_path):
         print(f"❌ Error de análisis: {e}")
         return None
 
+# 📌 Respuestas del chatbot basadas en emoción
 def chatbot_response(emotion):
     responses = {
         "happy": "¡Genial! Sigue disfrutando tu día. 😊",
@@ -123,7 +125,7 @@ def login():
         correo = request.form['correo']
         contraseña = request.form['contraseña']
         conn = get_db_connection()
-        with conn.cursor() as cursor:
+        with conn.cursor(dictionary=True) as cursor:
             cursor.execute('SELECT * FROM usuarios WHERE correo = %s', (correo,))
             usuario = cursor.fetchone()
         conn.close()
