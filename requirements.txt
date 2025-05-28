@@ -7,3 +7,5 @@ opencv-python
 numpy
 werkzeug
 python-dotenv
+tensorflow==2.19.0
+tf-keras
