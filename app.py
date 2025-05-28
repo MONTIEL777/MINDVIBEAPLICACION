@@ -31,7 +31,6 @@ def get_db_connection():
         user=os.getenv("MYSQL_USER"),
         password=os.getenv("MYSQL_PASSWORD"),
         database=os.getenv("MYSQL_DB"),
-       ssl={"ca": "/etc/ssl/certs/ca-certificates.crt"}
         cursorclass=pymysql.cursors.DictCursor
     )
 
